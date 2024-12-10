@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Data Pensiunan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .unq-profile-root_a1b2c3 {
+            font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .unq-profile-container_d4e5f6 {
+            min-height: 100vh;
+            background-color: #f3f4f6;
+            padding: 2rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .unq-profile-card_g7h8i9 {
+            width: 100%;
+            max-width: 40rem;
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .unq-profile-content_j0k1l2 {
+            padding: 2rem;
+        }
+
+        .unq-profile-header_m3n4o5 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .unq-profile-title_p6q7r8 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .unq-profile-form-group_y5z6a7 {
+            margin-bottom: 1.5rem;
+        }
+
+        .unq-profile-label_b8c9d0 {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+
+        .unq-profile-input-wrapper_e1f2g3 {
+            position: relative;
+        }
+
+        .unq-profile-input_k7l8m9 {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .unq-profile-input_k7l8m9:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .unq-profile-footer_n0o1p2 {
+            padding: 1.5rem 2rem;
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .unq-profile-submit-btn_q3r4s5 {
+            width: 100%;
+            background-color: #3b82f6;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            font-size: 1rem;
+        }
+
+        .unq-profile-submit-btn_q3r4s5:hover {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .unq-profile-row_s9t0u1 {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -0.5rem;
+            margin-right: -0.5rem;
+        }
+
+        .unq-profile-col_v2w3x4 {
+            flex: 1 1 50%;
+            padding: 0 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .unq-profile-col_v2w3x4 {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="unq-profile-root_a1b2c3">
+    <div class="unq-profile-container_d4e5f6">
+        <div class="unq-profile-card_g7h8i9">
+            <form id="profileForm">
+                <div class="unq-profile-content_j0k1l2">
+                    <div class="unq-profile-header_m3n4o5">
+                        <h1 class="unq-profile-title_p6q7r8">Formulir Data Pensiunan</h1>
+                    </div>
+
+                    <div class="unq-profile-row_s9t0u1">
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="nama" class="unq-profile-label_b8c9d0">Nama</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="nama" type="text" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="nik" class="unq-profile-label_b8c9d0">NIK</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="nik" type="text" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_s9t0u1">
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="statusPmp" class="unq-profile-label_b8c9d0">Status PMP</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="statusPmp" type="text" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="alamat" class="unq-profile-label_b8c9d0">Alamat</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="alamat" type="text" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_s9t0u1">
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="rt" class="unq-profile-label_b8c9d0">RT</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="rt" type="text" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="rw" class="unq-profile-label_b8c9d0">RW</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="rw" type="text" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_s9t0u1">
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="kelurahan" class="unq-profile-label_b8c9d0">Kelurahan/Desa</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="kelurahan" type="text" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="kecamatan" class="unq-profile-label_b8c9d0">Kecamatan</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="kecamatan" type="text" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_s9t0u1">
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="kota" class="unq-profile-label_b8c9d0">Kota/Kabupaten</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="kota" type="text" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="tahunPensiun" class="unq-profile-label_b8c9d0">Tahun Pensiun</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="tahunPensiun" type="number" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_s9t0u1">
+                        <div class="unq-profile-col_v2w3x4">
+                            <div class="unq-profile-form-group_y5z6a7">
+                                <label for="noHp" class="unq-profile-label_b8c9d0">No. HP</label>
+                                <div class="unq-profile-input-wrapper_e1f2g3">
+                                    <input id="noHp" type="tel" class="unq-profile-input_k7l8m9" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="unq-profile-footer_n0o1p2">
+                    <button type="submit" class="unq-profile-submit-btn_q3r4s5">Simpan Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            console.log('Data Pensiunan:', data);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Sharing - P2TEL Tasikmalaya</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="shortcut icon" href="assets/images/logo-p2tel.png" type="image/x-icon" />
+</head>
+
+<body>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .ms-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Profile Header */
+        .ms-profile-header {
+            background: linear-gradient(to right, #8b5cf6, #7c3aed);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ms-profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('purple-texture.svg');
+            opacity: 0.5;
+        }
+
+        .ms-profile-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ms-profile-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .ms-profile-image {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            border: 4px solid white;
+            background: #fff;
+        }
+
+        .ms-profile-details {
+            color: white;
+        }
+
+        .ms-country {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .ms-flag {
+            width: 1.5rem;
+            height: 1rem;
+        }
+
+        .ms-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .ms-role {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .ms-link-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .ms-link-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+        }
+
+        .ms-link {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: white;
+        }
+
+        .ms-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .ms-button {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .ms-share-button {
+            background-color: #6d28d9;
+            color: white;
+            border: none;
+        }
+
+        .ms-share-button:hover {
+            background-color: #5b21b6;
+        }
+
+        .ms-customize-button {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .ms-customize-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content */
+        /*.ms-search-container {
+            position: relative;
+            max-width: 24rem;
+            margin-bottom: 2rem;
+        }
+
+        .ms-search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .ms-search-input {
+            width: 100%;
+            padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+        }*/
+
+        .ms-task-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .ms-task-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .ms-task-icon {
+            background-color: #e0f2fe;
+            color: #0ea5e9;
+            padding: 0.75rem;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .ms-task-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .ms-task-date {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .ms-task-description {
+            font-size: 1rem;
+            color: #282b2f;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 640px) {
+            .ms-profile-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .ms-link-section {
+                align-items: flex-end;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .ms-container {
+                padding: 1.5rem;
+            }
+
+            .ms-task-card {
+                display: flex;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .ms-task-icon {
+                margin-bottom: 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .ms-container {
+                padding: 2rem;
+            }
+        }
+    </style>
+
+    <div class="ms-container">
+        <header class="ms-profile-header">
+            <div class="ms-profile-content">
+                <div class="ms-profile-info">
+                    <img src="assets/images/logo-p2tel.png" alt="Profile" class="ms-profile-image">
+                    <div class="ms-profile-details">
+                        <div class="ms-country">
+                            <img src="https://flagcdn.com/id.svg" alt="Indonesia flag" class="ms-flag">
+                            <span>Indonesia</span>
+                        </div>
+                        <h1 class="ms-name">Halaman Sharing</h1>
+                        <p class="ms-role">Anggota P2TEL Tasikmalaya dan scope wilayahnya</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="ms-main-content">
+            <!--<div class="ms-search-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="ms-search-icon">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" id="ms-search-input" placeholder="Search by report name..." class="ms-search-input">
+            </div>-->
+            <div id="ms-task-list" class="ms-task-list">
+                <!-- Task cards will be dynamically inserted here -->
+            </div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const taskList = document.getElementById('ms-task-list');
+            const searchInput = document.getElementById('ms-search-input');
+
+            function renderTasks(newTasks) {
+                newTasks.forEach(task => {
+                    const taskCard = document.createElement('div');
+                    taskCard.className = 'ms-task-card';
+                    taskCard.innerHTML = `
+                <img src="${task.profilePicture}" alt="Profile" class="ms-profile-image">
+                <div>
+                    <h3 class="ms-task-title">${task.name}</h3>
+                    <p class="ms-task-date">Diposting tanggal ${task.date}</p>
+                    <p class="ms-task-description">${task.content.replace(/\n/g, '<br/>')}</p>
+                </div>
+            `;
+                    taskList.appendChild(taskCard);
+                });
+            }
+
+            // Konfigurasi endpoint dan headers untuk fetch
+            const API_ENDPOINT = `https://wabot-n8n.v4zkxg.easypanel.host/webhook/0b531893-cb11-40c8-8a46-82eac9cf91cf`
+
+            let offset = 0;
+            const limit = 2;
+            let isFetching = false; // Untuk mencegah permintaan ganda
+            let data = '';
+
+            async function fetchData() {
+                if (isFetching) return; // Jika sedang mengambil data, keluar dari fungsi
+                isFetching = true;
+
+                // Membuat query parameter untuk limit dan offset
+                const query = `?limit=${limit}` +
+                    `&offset=${offset}`
+                    ;
+
+                try {
+                    const response = await fetch(`${API_ENDPOINT}${query}`, {
+                        method: "GET"
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
+                    }
+
+                    data = await response.json();
+
+                    if (data.length === 0) {
+                        // Tidak ada data lagi untuk dimuat
+                        window.removeEventListener("scroll", handleScroll);
+                        return;
+                    }
+
+                    /*data.forEach(item => {
+                      const div = document.createElement("div");
+                      div.classList.add("item");
+                      // Sesuaikan tampilan item sesuai struktur data Anda
+                      div.textContent = `ID: ${item.id}, Name: ${item.name}`;
+                      dataContainer.appendChild(div);
+                    });*/
+
+                    offset += limit;
+                } catch (error) {
+                    console.error(error);
+                } finally {
+                    isFetching = false;
+                    renderTasks(data);
+                }
+            }
+
+            function handleScroll() {
+                if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+                    fetchData();
+                }
+            }
+
+            // Tambahkan listener untuk scroll
+            window.addEventListener("scroll", handleScroll);
+
+            // Ambil data awal saat halaman dimuat
+            fetchData();
+        });
+
+
+    </script>
+</body>
+
+</html>

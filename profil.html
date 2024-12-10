@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile UI</title>
+    <style>
+        /* Reset and base styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Container */
+        .container {
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Grid layout */
+        .profile-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        /* Image gallery */
+        .image-gallery {
+            display: grid;
+            gap: 10px;
+        }
+
+        .main-image {
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            display: block;
+        }
+
+
+        /* Profile content */
+        .profile-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .host-label {
+            font-size: 1.1rem;
+            color: #424242;
+        }
+
+        .info-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            justify-content: center;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Buttons */
+        .button-group,
+        .tag-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 180px;
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        .button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .button-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-text {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .button-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .button-subtitle {
+            font-size: 0.75rem;
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* Tags */
+
+
+        /* Household section */
+        .household-member {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+
+        .member-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .member-info {
+            flex-grow: 1;
+        }
+
+        .member-name {
+            font-weight: 600;
+        }
+
+        .member-role {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .primary-badge {
+            background-color: #333;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        /* Responsive design */
+        @media (min-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="profile-grid">
+            <div class="image-gallery">
+                <img src="https://via.placeholder.com/400" alt="Profile photo" class="main-image">
+
+            </div>
+
+            <div class="profile-content">
+                <div>
+                    <h1>Achmad Rahadiana</h1>
+                    <p class="host-label">601780</p>
+                </div>
+
+                <ul class="info-list">
+                    <li>
+                        Perum Winaya Jaya A 37 RT. 002 RW. 003
+                    </li>
+                    <li>
+                        Sambongjaya, Mangkubumi
+                    </li>
+                    <li>
+                        Tasikmalaya
+                    </li>
+                </ul>
+
+                <div class="button-group">
+                    <button class="button">
+                        <div class="button-text">
+                            <span class="button-title">Status PMP</span>
+                            <span class="button-subtitle">Peserta</span>
+                        </div>
+                    </button>
+                    <button class="button">
+                        <div class="button-text">
+                            <span class="button-title">Nomor HP</span>
+                            <span class="button-subtitle">081322232300</span>
+                        </div>
+                    </button>
+                    <button class="button">
+                        <div class="button-text">
+                            <span class="button-title">Tahun Pensiun</span>
+                            <span class="button-subtitle">Jun-15</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

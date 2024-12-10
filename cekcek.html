@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fb;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        #app {
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            padding: 20px;
+            gap: 20px;
+            flex-wrap: wrap;
+            /* Untuk memastikan elemen membungkus pada layar kecil */
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 300px;
+            height: 100%;
+            background: #fff;
+            border-radius: 8px;
+            -webkit-box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+            -moz-box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+            box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+            padding: 20px;
+            flex-shrink: 0;
+        }
+
+        .profile-card {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .profile-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .profile-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .ratings {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            color: gold;
+            font-size: 16px;
+        }
+
+        .likes {
+            font-size: 14px;
+            color: #ff6b6b;
+        }
+
+        .contact-info {
+            text-align: left;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .tags {
+            text-align: left;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag {
+            background: #e0f7fa;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #00796b;
+        }
+
+        .owner {
+            font-size: 14px;
+            text-align: left;
+        }
+
+        /* Blog Content Styles */
+        .blog-content {
+            flex: 1;
+        }
+
+        #post-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .post-card {
+            background: #fff;
+            border-radius: 10px;
+            -webkit-box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+            -moz-box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+            box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+            padding: 15px;
+        }
+
+        .post-content>img {
+            max-width: 300px;
+            height: auto;
+            display: flex;
+            margin: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                /* Tata letak vertikal untuk layar kecil */
+            }
+
+            .sidebar {
+                width: 100%;
+                /* Sidebar menjadi full width */
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-pic {
+                width: 80px;
+                height: 80px;
+            }
+
+            .profile-name {
+                font-size: 16px;
+            }
+
+            .profile-title {
+                font-size: 12px;
+            }
+
+            .contact-info p,
+            .tags p {
+                font-size: 12px;
+            }
+
+            .tag {
+                padding: 3px 8px;
+                font-size: 10px;
+            }
+        }
+
+        .post-card {
+            background: #fff;
+            border-radius: 10px;
+            -webkit-box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+            -moz-box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+            box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .post-header {
+            display: flex;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 10px;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .post-date {
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        .post-content {
+            padding: 15px;
+        }
+
+        .post-content p {
+            margin: 0 0 10px;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .reactions span {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .shares {
+            color: #555;
+        }
+
+        .comment-box {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+        }
+
+        .comment-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            margin-right: 10px;
+        }
+
+        .comment-icons span {
+            margin-right: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>My Blog</h1>
+        <div id="auth">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="signUp()">Sign Up</button>
+            <button onclick="signIn()">Sign In</button>
+            <button onclick="signOut()">Sign Out</button>
+        </div>
+        <div id="content">
+            <h2>Create New Blog Post</h2>
+            <input type="text" id="title" placeholder="Blog Title">
+            <textarea id="description" placeholder="Blog Description"></textarea>
+            <input type="file" id="image" accept="image/*">
+            <button onclick="addPost()">Add Post</button>
+
+            <div class="container">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <div class="profile-card">
+                        <img src="https://via.placeholder.com/100" alt="Profile Picture" class="profile-pic">
+                        <h2 class="profile-name">Claudia Mills</h2>
+                        <p class="profile-title">Product Manager @TechnoCore</p>
+
+                        <div class="ratings">
+                            <span class="stars">★★★★☆</span>
+                            <span class="likes"><span>128</span> ❤️</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="contact-info">
+                            <p><strong>Email Address:</strong> claudia.mills@technocore.com</p>
+                            <p><strong>Phone Number:</strong> +919533480564</p>
+                            <p><strong>Address:</strong> West End 45th Stree, San Francisco<br>90123 California, US.</p>
+                        </div>
+
+                        <div class="tags">
+                            <p><strong>Tags:</strong></p>
+                            <div class="tag-list">
+                                <span class="tag">test tag</span>
+                                <span class="tag">another tag</span>
+                                <span class="tag">test tag</span>
+                                <span class="tag">another tag</span>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="owner">
+                            <p><strong>Owner:</strong> Mark Hansen</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Posts -->
+                <div class="blog-content">
+                    <div class="posts-container">
+                        <!-- Post cards will be dynamically injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+        import { getFirestore, collection, query, orderBy, limit, startAfter, getDocs, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
+
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js';
+        import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-storage.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCaS0f8EOkgL1Xog8GVogH3QsyT6AcZ4K8",
+            authDomain: "p2tel-67504.firebaseapp.com",
+            projectId: "p2tel-67504",
+            storageBucket: "p2tel-67504.firebasestorage.app",
+            messagingSenderId: "355396892826",
+            appId: "1:355396892826:web:55b008177bb4016427c723",
+            measurementId: "G-5ZKMZHWSMB"
+        };
+
+        // Inisialisasi Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        let lastVisible = null; // Track the last visible document
+        let isLoading = false; // Prevent multiple simultaneous fetches
+        const postsPerPage = 1; // Number of posts to load per page
+
+        const postContainer = document.querySelector('.posts-container');
+
+        // Fungsi yang dipanggil setelah Firebase siap
+        function initializeAppFeatures() {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    document.getElementById('content').style.display = 'block';
+                    loadPosts();
+                } else {
+                    document.getElementById('content').style.display = 'none';
+                }
+            });
+        }
+
+        // Fungsi Autentikasi
+        window.signUp = function () {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            createUserWithEmailAndPassword(auth, email, password)
+                .then(() => alert('User registered successfully'))
+                .catch((err) => alert(err.message));
+        }
+
+        window.signIn = function () {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    alert('Signed in successfully');
+                    document.getElementById('content').style.display = 'block';
+                    loadPosts();
+                })
+                .catch((err) => alert(err.message));
+        }
+
+        window.signOut = function () {
+            signOut(auth)
+                .then(() => {
+                    alert('Signed out');
+                    document.getElementById('content').style.display = 'none';
+                })
+                .catch((err) => alert(err.message));
+        }
+
+        function getBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+
+        // Fungsi CRUD Postingan
+        window.addPost = async function () {
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const imageInput = document.getElementById('image');
+            const file = imageInput.files[0];
+
+            if (!title || !description) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            let imageBase64 = '';
+            if (file) {
+                try {
+                    imageBase64 = await getBase64(file);
+                } catch (error) {
+                    alert('Failed to read image: ' + error.message);
+                    return;
+                }
+            }
+
+            addDoc(collection(db, "posts"), {
+                title,
+                description,
+                imageBase64,
+                timestamp: serverTimestamp(),
+            })
+                .then(() => {
+                    alert('Post added!');
+                    document.getElementById('title').value = '';
+                    document.getElementById('description').value = '';
+                    document.getElementById('image').value = '';
+
+                    listenForPosts();
+                })
+                .catch((err) => alert(err.message));
+        }
+
+        function listenForPosts() {
+            const q = query(collection(db, "posts"), orderBy("timestamp", "desc"), limit(postsPerPage));
+
+            onSnapshot(q, (snapshot) => { // Clear the container to re-render the posts
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    appendPost(data);
+                });
+            });
+        }
+
+        // Load initial posts
+        async function loadPosts(initialLoad = false) {
+            if (isLoading) return;
+            isLoading = true;
+
+
+            try {
+                let queryRef = query(
+                    collection(db, "posts"),
+                    orderBy("timestamp", "desc"),
+                    limit(postsPerPage)
+                );
+
+                // Add starting point for next batch if not the initial load
+                if (!initialLoad && lastVisible) {
+                    queryRef = query(queryRef, startAfter(lastVisible));
+                }
+
+                const snapshot = await getDocs(queryRef);
+
+                // Update the last visible document
+                if (!snapshot.empty) {
+                    lastVisible = snapshot.docs[snapshot.docs.length - 1];
+                }
+
+                // Append posts to container
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+
+                    const postCard = document.createElement('div');
+                    postCard.classList.add('post-card');
+                    postCard.innerHTML = `
+        <div class="post-header">
+          <div class="user-info">
+            <div class="avatar"></div>
+            <div class="user-details">
+              <span class="user-name">Anonymous User</span>
+              <span class="post-date">${new Date(data.timestamp?.toDate()).toLocaleString()}</span>
+            </div>
+          </div>
+        </div>
+        <div class="post-content">
+          <p>${data.title}</p>
+          <p>${data.description}</p>
+          ${data.imageBase64 ? `<img src="${data.imageBase64}" alt="Post Image">` : ''}
+        </div>
+        <div class="post-actions">
+          <div class="reactions">
+            <span>😍</span>
+            <span>😂</span>
+            <span>❤️</span>
+            <span>👍</span>
+            <span>👏</span>
+          </div>
+          <span class="shares">73 Shares</span>
+        </div>
+        <div class="comment-box">
+          <input type="text" placeholder="Write your comment..." />
+          <div class="comment-icons">
+            <span>😊</span>
+            <span>📎</span>
+            <span>📷</span>
+          </div>
+        </div>
+      `;
+                    postContainer.appendChild(postCard);
+                });
+
+                if (snapshot.empty) {
+                    console.log("No more posts to load");
+                }
+            } catch (error) {
+                console.error("Error loading posts:", error);
+            }
+
+            isLoading = false;
+        }
+
+        function appendPost(data) {
+            const postCard = document.createElement("div");
+            postCard.classList.add("post-card");
+            postCard.innerHTML = `
+    <div class="post-header">
+      <div class="user-info">
+        <div class="avatar"></div>
+        <div class="user-details">
+          <span class="user-name">Anonymous User</span>
+          <span class="post-date">${new Date(data.timestamp?.toDate()).toLocaleString()}</span>
+        </div>
+      </div>
+    </div>
+    <div class="post-content">
+      <p>${data.title}</p>
+      <p>${data.description}</p>
+      
+          ${data.imageBase64 ? `<img src="${data.imageBase64}" alt="Post Image">` : ''}
+    </div>
+    <div class="post-actions">
+      <div class="reactions">
+        <span>😍</span>
+        <span>😂</span>
+        <span>❤️</span>
+        <span>👍</span>
+        <span>👏</span>
+      </div>
+      <span class="shares">73 Shares</span>
+    </div>
+    <div class="comment-box">
+      <input type="text" placeholder="Write your comment..." />
+      <div class="comment-icons">
+        <span>😊</span>
+        <span>📎</span>
+        <span>📷</span>
+      </div>
+    </div>
+  `;
+
+            postContainer.prepend(postCard); // Add the new post to the top
+        }
+
+        // Infinite Scroll Listener
+        function setupInfiniteScroll() {
+            window.addEventListener('scroll', () => {
+                const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+                if (scrollTop + clientHeight >= scrollHeight - 100 && !isLoading) {
+                    loadPosts();
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener("DOMContentLoaded", () => {
+            loadPosts(true); // Load initial posts
+            setupInfiniteScroll(); // Setup infinite scroll listener
+        });
+    </script>
+</body>
+
+</html>

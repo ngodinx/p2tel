@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cover {
+            background-color: #2563eb;
+            color: white;
+            padding: 2rem;
+            position: relative;
+            min-height: 300px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo::before {
+            content: '';
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .cover h1 {
+            font-size: 2rem;
+            margin-top: 2rem;
+            line-height: 1.2;
+        }
+
+        .cover-image {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            width: 50%;
+            max-width: 200px;
+        }
+
+        .signup-form {
+            flex-grow: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-form-inner {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .signup-form h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .signup-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .signup-form input {
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+            width: 100%;
+        }
+
+        .signup-form button {
+            padding: 0.75rem;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .signup-form button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .terms,
+        .signin-link {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-top: 1rem;
+        }
+
+        .terms a,
+        .signin-link a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .terms a:hover,
+        .signin-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                flex-direction: row;
+            }
+
+            .cover {
+                width: 50%;
+                min-height: 100vh;
+            }
+
+            .cover h1 {
+                font-size: 2.5rem;
+                margin-top: 4rem;
+            }
+
+            .cover-image {
+                bottom: 2rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+                max-width: 400px;
+            }
+
+            .signup-form {
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cover">
+        <div class="logo"></div>
+        <h1>One click to go<br>all digital.</h1>
+    </div>
+    <div class="signup-form">
+        <div class="signup-form-inner">
+            <h2>Sign up</h2>
+            <form id="signupForm">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Mobile No" required>
+                <div class="terms">
+                    You are agreeing to the <a href="#">Terms of Services</a> and <a href="#">Privacy Policy</a>
+                </div>
+                <button type="submit">Get Started</button>
+            </form>
+            <div class="signin-link">
+                Already a member? <a href="#">Sign in</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Here you would typically handle form submission, 
+            // such as sending data to a server or performing client-side validation
+            alert('Form submitted!');
+        });
+    </script>
+</body>
+
+</html>

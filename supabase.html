@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Blog with Infinite Scroll</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #posts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .post {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #loading {
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    <div class="container">
+        <h1>Blog Posts</h1>
+        <div id="posts-container"></div>
+        <div id="loading" class="hidden">Loading...</div>
+    </div>
+    <script>
+        // Supabase configuration
+        const SUPABASE_URL = "https://your-supabase-url.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InltYWNpa293cGloanhtaHBtYnl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM3MzE3NDEsImV4cCI6MjA0OTMwNzc0MX0.gbIfwxqV5yaDSUwYwYRgRPLtL7eTuKGPwcVmChJ-dcg";
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // DOM Elements
+        const postsContainer = document.getElementById("posts-container");
+        const loading = document.getElementById("loading");
+
+        // Pagination variables
+        let limit = 10;
+        let offset = 0;
+        let isFetching = false;
+
+        // Fetch posts from Supabase
+        const fetchPosts = async () => {
+            isFetching = true;
+            loading.classList.remove("hidden");
+
+            const { data, error } = await supabase
+                .from("posts")
+                .select("*")
+                .order("id", { ascending: true })
+                .range(offset, offset + limit - 1);
+
+            if (error) {
+                console.error("Error fetching posts:", error);
+                loading.classList.add("hidden");
+                return;
+            }
+
+            if (data.length > 0) {
+                data.forEach((post) => {
+                    const postElement = document.createElement("div");
+                    postElement.className = "post";
+                    postElement.innerHTML = `
+        <h2>${post.title}</h2>
+        <p>${post.content}</p>
+      `;
+                    postsContainer.appendChild(postElement);
+                });
+
+                offset += limit;
+            }
+
+            loading.classList.add("hidden");
+            isFetching = false;
+        };
+
+        // Infinite scroll implementation
+        window.addEventListener("scroll", () => {
+            if (
+                window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
+                !isFetching
+            ) {
+                fetchPosts();
+            }
+        });
+
+        // Initial fetch
+        fetchPosts();
+
+    </script>
+</body>
+
+</html>

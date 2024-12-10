@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Data Pensiunan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .unq-profile-root_a1b2c3 {
+            font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .unq-profile-container_d4e5f6 {
+            min-height: 100vh;
+            background-color: #f3f4f6;
+            padding: 2rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .unq-profile-card_g7h8i9 {
+            width: 100%;
+            max-width: 40rem;
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .unq-profile-content_j0k1l2 {
+            padding: 2rem;
+        }
+
+        .unq-profile-header_m3n4o5 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .unq-profile-title_p6q7r8 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+
+        .unq-profile-photo-container_s9t0u1 {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .unq-profile-photo-wrapper_v2w3x4 {
+            position: relative;
+        }
+
+        .unq-profile-photo_y5z6a7 {
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #e5e7eb;
+            box-shadow: 0 0 0 4px #ffffff, 0 0 0 6px #3b82f6;
+        }
+
+        .unq-profile-photo-edit_b8c9d0 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0.5rem;
+            background-color: #3b82f6;
+            border-radius: 0.5rem;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .unq-profile-photo-edit_b8c9d0:hover {
+            background-color: #2563eb;
+            transform: scale(1.05);
+        }
+
+        .unq-profile-form-group_e1f2g3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .unq-profile-label_h4i5j6 {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+
+        .unq-profile-input-wrapper_k7l8m9 {
+            position: relative;
+        }
+
+        .unq-profile-input-icon_n0o1p2 {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .unq-profile-input_q3r4s5 {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .unq-profile-input_q3r4s5:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .unq-profile-footer_t6u7v8 {
+            padding: 1.5rem 2rem;
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .unq-profile-submit-btn_w9x0y1 {
+            width: 100%;
+            background-color: #3b82f6;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            font-size: 1rem;
+        }
+
+        .unq-profile-submit-btn_w9x0y1:hover {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .unq-profile-row_z2a3b4 {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -0.5rem;
+            margin-right: -0.5rem;
+        }
+
+        .unq-profile-col_c5d6e7 {
+            flex: 1 1 50%;
+            padding: 0 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .unq-profile-col_c5d6e7 {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="unq-profile-root_a1b2c3">
+    <div class="unq-profile-container_d4e5f6">
+        <div class="unq-profile-card_g7h8i9">
+            <form id="profileForm">
+                <div class="unq-profile-content_j0k1l2">
+                    <div class="unq-profile-header_m3n4o5">
+                        <h1 class="unq-profile-title_p6q7r8">Formulir Data Pensiunan</h1>
+                        <div class="unq-profile-photo-container_s9t0u1">
+                            <div class="unq-profile-photo-wrapper_v2w3x4">
+                                <div class="unq-profile-photo_y5z6a7">
+                                    <img src="/placeholder.svg" alt="Profile" width="112" height="112"
+                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <button type="button" class="unq-profile-photo-edit_b8c9d0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_z2a3b4">
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="nama" class="unq-profile-label_h4i5j6">Nama</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    <input id="nama" type="text" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="nik" class="unq-profile-label_h4i5j6">NIK</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <input id="nik" type="text" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_z2a3b4">
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="statusPmp" class="unq-profile-label_h4i5j6">Status PMP</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                        </path>
+                                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                    </svg>
+                                    <input id="statusPmp" type="text" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="alamat" class="unq-profile-label_h4i5j6">Alamat</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <input id="alamat" type="text" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_z2a3b4">
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="rt" class="unq-profile-label_h4i5j6">RT</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="9 11 12 14 22 4"></polyline>
+                                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                    </svg>
+                                    <input id="rt" type="text" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="rw" class="unq-profile-label_h4i5j6">RW</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="9 11 12 14 22 4"></polyline>
+                                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                    </svg>
+                                    <input id="rw" type="text" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_z2a3b4">
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="kelurahan" class="unq-profile-label_h4i5j6">Kelurahan/Desa</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                    <input id="kelurahan" type="text" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="kecamatan" class="unq-profile-label_h4i5j6">Kecamatan</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                    <input id="kecamatan" type="text" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_z2a3b4">
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="kota" class="unq-profile-label_h4i5j6">Kota/Kabupaten</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                                    </svg>
+                                    <input id="kota" type="text" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="tahunPensiun" class="unq-profile-label_h4i5j6">Tahun Pensiun</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <input id="tahunPensiun" type="number" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-row_z2a3b4">
+                        <div class="unq-profile-col_c5d6e7">
+                            <div class="unq-profile-form-group_e1f2g3">
+                                <label for="noHp" class="unq-profile-label_h4i5j6">No. HP</label>
+                                <div class="unq-profile-input-wrapper_k7l8m9">
+                                    <svg class="unq-profile-input-icon_n0o1p2" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                    </svg>
+                                    <input id="noHp" type="tel" class="unq-profile-input_q3r4s5" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="unq-profile-footer_t6u7v8">
+                    <button type="submit" class="unq-profile-submit-btn_w9x0y1">Simpan Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            console.log('Data Pensiunan:', data);
+        });
+    </script>
+</body>
+
+</html>

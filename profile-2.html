@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refined Profile Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .unq-profile-root_a1b2c3 {
+            font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .unq-profile-container_d4e5f6 {
+            min-height: 100vh;
+            background-color: #f3f4f6;
+            padding: 2rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .unq-profile-card_g7h8i9 {
+            width: 100%;
+            max-width: 50rem;
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .unq-profile-content_j0k1l2 {
+            padding: 2rem;
+        }
+
+        .unq-profile-photo-container_m3n4o5 {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .unq-profile-photo-wrapper_p6q7r8 {
+            position: relative;
+        }
+
+        .unq-profile-photo_s9t0u1 {
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #e5e7eb;
+            box-shadow: 0 0 0 4px #ffffff, 0 0 0 6px #3b82f6;
+        }
+
+        .unq-profile-photo-edit_v2w3x4 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0.5rem;
+            background-color: #3b82f6;
+            border-radius: 0.5rem;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .unq-profile-photo-edit_v2w3x4:hover {
+            background-color: #2563eb;
+            transform: scale(1.05);
+        }
+
+        .unq-profile-form-group_y5z6a7 {
+            margin-bottom: 1.5rem;
+        }
+
+        .unq-profile-label_b8c9d0 {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+
+        .unq-profile-input-wrapper_e1f2g3 {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unq-profile-input-icon_h4i5j6 {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .unq-profile-input_k7l8m9 {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .unq-profile-input_k7l8m9:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .unq-profile-footer_n0o1p2 {
+            padding: 1.5rem 2rem;
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .unq-profile-submit-btn_q3r4s5 {
+            width: 100%;
+            background-color: #3b82f6;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            font-size: 1rem;
+        }
+
+        .unq-profile-submit-btn_q3r4s5:hover {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 640px) {
+            .unq-profile-container_d4e5f6 {
+                padding: 1rem;
+            }
+
+            .unq-profile-card_g7h8i9 {
+                max-width: 100%;
+            }
+
+            .unq-profile-content_j0k1l2 {
+                padding: 1.5rem;
+            }
+
+            .unq-profile-footer_n0o1p2 {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="unq-profile-root_a1b2c3">
+    <div class="unq-profile-container_d4e5f6">
+        <div class="unq-profile-card_g7h8i9">
+            <form id="profileForm">
+                <div class="unq-profile-content_j0k1l2">
+                    <div class="unq-profile-photo-container_m3n4o5">
+                        <div class="unq-profile-photo-wrapper_p6q7r8">
+                            <div class="unq-profile-photo_s9t0u1">
+                                <img src="/placeholder.svg" alt="Profile" width="112" height="112"
+                                    style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <button type="button" class="unq-profile-photo-edit_v2w3x4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-form-group_y5z6a7">
+                        <label for="firstName" class="unq-profile-label_b8c9d0">First Name</label>
+                        <div class="unq-profile-input-wrapper_e1f2g3">
+                            <svg class="unq-profile-input-icon_h4i5j6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <input id="firstName" type="text" class="unq-profile-input_k7l8m9" value="Dorothy">
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-form-group_y5z6a7">
+                        <label for="lastName" class="unq-profile-label_b8c9d0">Last Name</label>
+                        <div class="unq-profile-input-wrapper_e1f2g3">
+                            <svg class="unq-profile-input-icon_h4i5j6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <input id="lastName" type="text" class="unq-profile-input_k7l8m9" value="Ann">
+                        </div>
+                    </div>
+
+                    <div class="unq-profile-form-group_y5z6a7">
+                        <label for="email" class="unq-profile-label_b8c9d0">Email Address</label>
+                        <div class="unq-profile-input-wrapper_e1f2g3">
+                            <svg class="unq-profile-input-icon_h4i5j6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <input id="email" type="email" class="unq-profile-input_k7l8m9"
+                                value="dorothyann@gmail.com">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="unq-profile-footer_n0o1p2">
+                    <button type="submit" class="unq-profile-submit-btn_q3r4s5">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            console.log('Profile updated:', { firstName, lastName, email });
+        });
+    </script>
+</body>
+
+</html>
